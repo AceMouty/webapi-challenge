@@ -64,7 +64,7 @@ router.delete("/", (req, res) => {
             // Try to match a action id that is passed to us
             project.actions.forEach( obj => {
                 if(obj.id === req.body.id){
-                    Projects.remove(obj.id)
+                    Actions.remove(obj.id)
                     .catch(err => res.status(500).json({message: "There was a problem with the server"}))
                     res.status(200).json({data: obj, message: "Action deleted"})
                 }
