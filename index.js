@@ -12,3 +12,19 @@ I need this code, just don't know where, perhaps should make some middleware, do
 
 Go code!
 */
+
+// bring in express 
+const express = require('express');
+const server = express();
+// Bring in routes
+const ProjectRoutes = require('./routes/projectRoutes');
+const ActionsRoutes = require('./routes/actionsRoutes');
+// teach the server to read json
+server.use(express.json());
+
+// Using defined routes
+server.use("/api/projects", ProjectRoutes);
+server.use("/api/actions", ActionsRoutes)
+
+const port = process.env.PORT || 8000;
+server.listen(port, () => console.log(`Magic happening on port ${port}`))

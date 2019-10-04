@@ -26,13 +26,26 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+    - Learned about routing with express
+    - Learned about different ways of gathering data from incoming requests
+
 - [ ] Describe Middleware?
+
+    `Middleware` sits between a incoming request and the DB. Middleware can be used to do some kind of data validation along with error handling. The pipeline
+    for middleware varies from project to project.
 
 - [ ] Describe a Resource?
 
+    A `resource` is data. When working with API's and middle ware when we talk about resources we are talking about access points in which we can gather data.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+    `API's` will return a status code of some sort to let the client know that the request has been completed successfully. Two common staus codes are a
+    `200` and a `201`. 
+
 - [ ] How can we partition our application into sub-applications?
+
+    We can create sub applications by adding Sub routes. This contains all route definitions for a specific route in its own file.
 
 ## Project Setup
 
