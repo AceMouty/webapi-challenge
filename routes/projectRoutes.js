@@ -33,12 +33,16 @@ router.delete("/", (req, res) => {
     const porjectID = req.body.id;
     Projects.get(porjectID)
     .then(project => {
+        console.log(project)
         if(project){
             Projects.remove(project.id)
             .catch(err => res.status(500).json({message: "There was an issue removing the project from the server"}))
             res.status(200).json({data: project})
+        } else {
+            res.status(404).json({message: "The project with that ID does not exist"})
         }
     })
+    
 })
 
 module.exports = router;
