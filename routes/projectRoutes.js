@@ -14,10 +14,31 @@ router.post("/", (req, res) => {
     const createProject = req.body
     Projects.insert(createProject)
     .then(newProject => {
-        res.status(200).json({data: newProject})
+        res.status(201).json({data: newProject})
     })
     .catch(err => res.status(500).json({message: "There was a problem in the server", err:err}))
 })
 
+// UPDATE: update an already existing project
+router.put("/", (req, res) => {
+    const porjectID = req.body.id;
+    const changes = req.body;
+    Projects.update(porjectID, changes)
+    .then(update => res.status(200).json({data: update}))
+    .catch(res.status(500).json({message: "There was a problem in the server"}))
+})
+
+// DELETE: delete a project
+router.delete("/", (req, res) => {
+    const porjectID = req.body.id;
+    Projects.get(porjectID)
+    .then(project => {
+        if(project){
+            Projects.remove(project.id)
+            .catch(err => res.status(500).json({message: "There was an issue removing the project from the server"}))
+            res.status(200).json({data: project})
+        }
+    })
+})
 
 module.exports = router;
